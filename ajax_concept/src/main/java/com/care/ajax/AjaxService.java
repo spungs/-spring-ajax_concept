@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -39,6 +40,7 @@ public class AjaxService {
 			return 1;
 		}
 		
+		// 클라이언트에게 반환하기 위해 공통으로 쓰이는 json형태의 String form
 		public String fromJson(ArrayList<AjaxDTO> list) {
 			String data = "{\"cd\" : [";
 			for(AjaxDTO tmp : list) {
@@ -60,12 +62,11 @@ public class AjaxService {
 			ArrayList<AjaxDTO> list = repo.title(inputData);
 			return fromJson(list);
 		}
-		public String artist(String inputData) {
-			ArrayList<AjaxDTO> list = repo.artist(inputData);
-			return fromJson(list);
-		}
-		public String price(String inputData) {
-			ArrayList<AjaxDTO> list = repo.price(inputData);
+		
+		public String choose(HashMap<String, String> map) {
+			ArrayList<AjaxDTO> list = repo.choose(map);
+			if(list.isEmpty() == true)
+				return "";
 			return fromJson(list);
 		}
 }

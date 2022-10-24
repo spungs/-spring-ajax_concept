@@ -11,10 +11,18 @@
 	<select id="title" resultType="com.care.ajax.AjaxDTO">
 		SELECT * FROM ajax WHERE title like '%'||#{inputData}||'%'
 	</select>
-	<select id="artist" resultType="com.care.ajax.AjaxDTO">
-		SELECT * FROM ajax WHERE artist like '%'||#{inputData}||'%'
-	</select>
-	<select id="price" resultType="com.care.ajax.AjaxDTO">
-		SELECT * FROM ajax WHERE price like '%'||#{inputData}||'%'
+	<select id="choose" resultType="com.care.ajax.AjaxDTO">
+		SELECT * FROM ajax
+		<where>
+			<if test="sel.equals('title')">
+				title like '%'||#{inputData}||'%'
+			</if>
+			<if test="sel.equals('artist')">
+				artist like '%'||#{inputData}||'%'
+			</if>
+			<if test="sel.equals('price')">
+				price like '%'||#{inputData}||'%'
+			</if>
+		</where>
 	</select>
 </mapper>

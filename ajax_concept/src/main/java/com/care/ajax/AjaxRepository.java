@@ -1,6 +1,7 @@
 package com.care.ajax;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +11,7 @@ public interface AjaxRepository {
 	
 	ArrayList<AjaxDTO> all();
 
-	ArrayList<AjaxDTO> title(String inputData);
-	ArrayList<AjaxDTO> artist(String inputData);
-	ArrayList<AjaxDTO> price(String inputData);
+	ArrayList<AjaxDTO> title(String title);
+	
+	ArrayList<AjaxDTO> choose(HashMap<String, String> map);
 }

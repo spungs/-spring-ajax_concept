@@ -206,24 +206,6 @@ public class AjaxController {
 	@ResponseBody
 	@PostMapping(value="ex7",produces="application/json; charset=UTF-8")
 	public String ex7Post(@RequestBody(required = false) HashMap<String, String> map) {
-		
-		String inputData = map.get("inputData");
-		String sel = map.get("sel");
-		
-		if(inputData == null || inputData.isEmpty()) {
-			// 모든 데이터
-			return service.all();
-		}
-		
-		if(sel.equals("artist")) {
-			return service.artist(inputData);
-		}
-		if(sel.equals("price")) {
-			return service.price(inputData);
-		}
-		
-		// title
-		return service.title(inputData);
-	
+		return service.choose(map);
 	}
 }
